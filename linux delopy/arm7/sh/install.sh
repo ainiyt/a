@@ -6,18 +6,23 @@ else
     echo "需使用root用户"
 	echo "请执行sudo -i 或者 su"
 	echo "然后执行 bash $mane/install.sh"
+	echo "注:脚本只可以执行一次"
 	exit 0;
 	}
 fi
+echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
+wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add -
+wget http://www.webmin.com/jcameron-key.asc&&apt-key add jcameron-key.asc
 sudo apt update
-sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg  unzip samba resilio-sync
+sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg  unzip samba resilio-sync webmin 
 sudo apt-get install -y  apache2  php7.0   php-zip php-dompdf php-xml php-mbstring  php-curl php-mysql  php-gd
 
 
 #ΦΥΆΛ
-echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
-wget http://www.webmin.com/jcameron-key.asc&&apt-key add jcameron-key.asc
-sudo apt-get update&&sudo apt-get install webmin -y
+#echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+#wget http://www.webmin.com/jcameron-key.asc&&apt-key add jcameron-key.asc
+#sudo apt-get update&&sudo apt-get install webmin -y
 sudo echo "
 [sdcard]
     comment = samba home directory
