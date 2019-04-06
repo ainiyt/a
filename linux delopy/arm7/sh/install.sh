@@ -58,6 +58,7 @@ sudo chmod -R 777 $install/install/
 sudo mv $install/install/BaiduPCS-Go /usr/bin/
 sudo mv $install/install/html/* /var/www/html/
 sudo chmod -R 777 /var/www/
+sed -i '32s\ \<p><a href="#" onclick="javascript:window.location.port=10000">终端</p>\'  /var/www/html/index.html
 sudo mv $install/install/config/sync.conf /opt/
 sudo mv $install/install/config/aria2/*  /etc/aria2/
 sudo mv $install/install/init.d/* /etc/init.d/
