@@ -10,13 +10,14 @@ else
 	exit 0;
 	}
 fi
+sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg  unzip gnupg
 echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
 echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
 wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add -
 wget http://www.webmin.com/jcameron-key.asc&&apt-key add jcameron-key.asc
 sudo apt update
-sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg  unzip samba resilio-sync webmin 
-sudo apt-get install -y  apache2  php7.0   php-zip php-dompdf php-xml php-mbstring  php-curl php-mysql  php-gd
+
+sudo apt-get install -y  apache2  php7.0   php-zip php-dompdf php-xml php-mbstring  php-curl php-mysql  php-gd  samba resilio-sync webmin 
 
 
 #ΦΥΆΛ
