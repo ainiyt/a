@@ -64,6 +64,7 @@ sudo mv $install/install/config/sync.conf /opt/
 sudo mv $install/install/config/aria2/*  /etc/aria2/
 sudo mv $install/install/init.d/* /etc/init.d/
 sudo update-rc.d duo defaults 99
+ usermod -a -G aid_inet,aid_net_raw plex
 sed -i  '6s\#\AddType application/x-httpd-php .php\' /etc/apache2/apache2.conf
 sudo dpkg -i $install/plexmediaserver_1.15.3.876-ad6e39743_armhf.deb
 if [ ! -f "/etc/rc.local" ];then
@@ -91,7 +92,8 @@ sudo  netdata >/dev/null&
 /usr/bin/rslsync  --config /opt/sync.conf >/dev/null&
 service apache2 restart&
 service smbd restart >/dev/null&
-
+service webmin start
+service plexmediaserver start
 exit 0 " >>  /etc/rc.local
 sudo chown root:root /etc/rc.local
 sudo chmod 755 /etc/rc.local
